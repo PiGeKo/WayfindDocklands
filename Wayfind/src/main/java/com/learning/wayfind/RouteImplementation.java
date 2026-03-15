@@ -8,6 +8,9 @@ package com.learning.wayfind;
  *
  * @author Konko
  */
-public class RouteImplementation {
-    
+public interface RouteImplementation {
+    Route getRoute();
+    int getDifficulty();
+    int getRating();
 }
+

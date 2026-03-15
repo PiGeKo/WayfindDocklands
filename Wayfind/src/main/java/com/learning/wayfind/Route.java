@@ -1,13 +1,55 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.learning.wayfind;
-
 /**
  *
- * @author Konko
+ * Piotr Konkol
+ * 2026
  */
-public class Route {
+public abstract class Route implements RouteImplementation {
+ 
+    private String id;
+    private String name;
+    private int rating;
+    private String note;
+ 
+    //Constructor
+    public Route(String id, String name) {
+        this.id = id;
+        this.name = name;
+        this.rating = 0;
+        this.note = "";
+    }
     
+    //Getters
+    public String getID() {
+        return id;
+    }
+    public String getName() {
+        return name;
+    }
+    
+    public int getRating() {
+        return rating;
+    }
+    
+    public String getNote() {
+        return note;
+    }
+    
+    
+    @Override
+    public Route getRoute() { return this; }
+    
+    @Override
+    public int getDifficulty() { return calcDifficulty(); }
+    
+    //Setters
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+    public void setNote(String note) {
+        this.note = note;
+    }
+   //each own difficulty calc
+    public abstract int calcDifficulty();
 }
+

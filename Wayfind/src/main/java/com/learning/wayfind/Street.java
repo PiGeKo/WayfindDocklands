@@ -9,5 +9,20 @@ package com.learning.wayfind;
  * @author Konko
  */
 public class Street {
+ 
+    private String name;
+    private int streetID;
+ 
+    public Street(String name, int streetID) {
+    }
+ 
+    public String getName() {
+        return null;
+    }
     
+    
+    public int getID() {
+        return 0;
+    }
 }
+
