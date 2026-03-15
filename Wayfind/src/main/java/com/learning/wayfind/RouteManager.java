@@ -1,12 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.learning.wayfind;
 
 /**
  *
- * @author Konko
+ * Piotr Konkol
+ * 2026
  */
 import java.util.LinkedList;
 import java.util.HashMap;
@@ -19,6 +16,9 @@ public class RouteManager {
     private LinkedList<Street> currentRoute;
     //Constructor
     public RouteManager() {
+        routes = new HashMap<>();
+        undoStack = new Stack<>();
+        currentRoute = new LinkedList<>();
     }
     
     //Methods
