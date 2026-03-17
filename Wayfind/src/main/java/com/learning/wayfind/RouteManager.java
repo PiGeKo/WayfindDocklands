@@ -23,30 +23,65 @@ public class RouteManager {
     
     //Methods
     public void addRoute(String name, Route route) {
-    
-    }
-    
-    public Route getRoute(String name) {
-        return null;
-    }
-    
-    public void updateRoute(String name, Route route) {
-    
-    }
-    
-    public void deleteRoute(String name) {
-    
-    }
-    public void undoLastStreet() {
-    
-    }
-    public void saveToCSV(String filename) {
-    
-    }
-    public void loadFromCSV(String filename) {
-    
+        routes.put(name, route);
     }
 
+    public Route getRoute(String name) {
+        return routes.get(name);
+    }
+
+    public void updateRoute(String name, Route route) {
+        routes.put(name, route);
+    }
+
+    public void deleteRoute(String name) {
+        routes.remove(name);
+    }
+    public void undoLastStreet() {
+        if (!undoStack.isEmpty()){
+        undoStack.pop();
+        currentRoute.removeLast();
+        }
+    }
+    
+    public void addStreetToRoute(Street street) {
+        currentRoute.add(street);
+        undoStack.push(street);
+    }
+    
+    public void clearCurrentRoute() {
+        currentRoute.clear();
+        undoStack.clear();
+    }
+    
+    public LinkedList<Street> getCurrentRoute() {
+        return currentRoute;
+    }
+    
+    public String getCurrentRouteDisplay() {
+        if (currentRoute.isEmpty()) return "No streets added yet.";
+        StringBuilder sb = new StringBuilder();
+    
+    int increment = 1;
+    for (Street s : currentRoute) {
+        sb.append(increment).append(". ").append(s.toString()).append("\n");
+        increment += 1;
+    }
+    
+    return sb.toString();
+}
+    
+    
+    
+    public void saveToCSV(String routeName, int rating, String note) {
+    // add the code to save the thing to the csv
+    }
+    
+    public String loadFromCSV(String filename) {
+    // add the code to load the thing from csv
+    return "";
+
+}
 }
 
 

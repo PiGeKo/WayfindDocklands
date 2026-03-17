@@ -11,15 +11,21 @@ public class Street {
     private int streetID;
  
     public Street(String name, int streetID) {
-    }
+        this.name = name;
+        this.streetID = streetID;
+}
  
     public String getName() {
-        return null;
+        return name;
     }
     
     
     public int getID() {
-        return 0;
+        return streetID;
+    }
+    @Override
+    public String toString() {
+        return streetID + " - " + name;
     }
 }
 

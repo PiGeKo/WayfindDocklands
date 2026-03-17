@@ -6,11 +6,12 @@ package com.learning.wayfind;
 
 /**
  *
- * @author Konko
+ * Piotr Konkol
+ * 2026
  */
 public class LaunchApp {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+         java.awt.EventQueue.invokeLater(() -> new MapGUI().setVisible(true));
     }
 }
