@@ -16,10 +16,6 @@ public class MapGUI extends javax.swing.JFrame {
      */
     public MapGUI() {
         initComponents();
-        ratingDropdown.removeAllItems();
-        for (int i = 1; i <= 10; i++) {
-            ratingDropdown.addItem(String.valueOf(i));
-        }
         loadStreets();
     }
     private void loadStreets() {
@@ -49,6 +45,7 @@ public class MapGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -67,6 +64,11 @@ public class MapGUI extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         nameEntry = new javax.swing.JTextField();
         clearBTN = new javax.swing.JButton();
+        walkRad = new javax.swing.JRadioButton();
+        accessRad = new javax.swing.JRadioButton();
+        rampsCheck = new javax.swing.JCheckBox();
+        terrainDropdown = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,7 +115,7 @@ public class MapGUI extends javax.swing.JFrame {
             }
         });
 
-        ratingDropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ratingDropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
 
         jLabel5.setText("Rating:");
 
@@ -142,6 +144,24 @@ public class MapGUI extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup.add(walkRad);
+        walkRad.setSelected(true);
+        walkRad.setText("For walking");
+        walkRad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                walkRadActionPerformed(evt);
+            }
+        });
+
+        buttonGroup.add(accessRad);
+        accessRad.setText("Accessible");
+
+        rampsCheck.setText("Has ramps?");
+
+        terrainDropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Asphalt", "Cobblestone", "Steep", "Unpaved" }));
+
+        jLabel8.setText("Main terrain:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -150,60 +170,72 @@ public class MapGUI extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(138, 138, 138)
+                                .addComponent(saveToCSV, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(ratingDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(saveToCSV, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(jLabel4)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(undoBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(addBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                                                .addComponent(streetNrEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(loadFromCSV)
                                                 .addComponent(nameEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(noteEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGap(78, 78, 78)))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(loadFromCSV)
+                                        .addComponent(jLabel2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(clearBTN))
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(undoBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(addBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                                            .addComponent(streetNrEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(0, 23, Short.MAX_VALUE))))
+                                        .addComponent(clearBTN)
+                                        .addGap(27, 27, 27))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(walkRad)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(accessRad)
+                                            .addGap(1, 1, 1))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel8))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(terrainDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(rampsCheck))
+                                                .addComponent(noteEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
+                        .addGap(89, 89, 89)
                         .addComponent(jLabel3)
-                        .addGap(18, 18, 18))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addGap(34, 34, 34)
+                        .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(streetNrEntry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -212,28 +244,37 @@ public class MapGUI extends javax.swing.JFrame {
                             .addComponent(addBTN)
                             .addComponent(undoBTN))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(clearBTN))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(loadFromCSV)
-                            .addComponent(clearBTN))
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(nameEntry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(nameEntry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(loadFromCSV)
+                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(ratingDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
-                            .addComponent(noteEntry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
-                        .addComponent(saveToCSV)
-                        .addGap(30, 30, 30))))
+                            .addComponent(noteEntry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(terrainDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rampsCheck)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(walkRad)
+                    .addComponent(accessRad))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addComponent(saveToCSV)
+                .addContainerGap())
         );
 
         pack();
@@ -241,7 +282,9 @@ public class MapGUI extends javax.swing.JFrame {
 
     private void addBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBTNActionPerformed
     String input = streetNrEntry.getText().trim();
-    if (input.isEmpty()) return;
+    if (input.isEmpty()){ 
+        return;
+    }
     try {
         int id = Integer.parseInt(input);
         Street street = streetMap.get(id);
@@ -269,11 +312,50 @@ public class MapGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_undoBTNActionPerformed
 
     private void saveToCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveToCSVActionPerformed
-    // add the code to save the thing to the csv
+    String name = nameEntry.getText().trim();
+    String note = noteEntry.getText().trim();
+    int rating = Integer.parseInt((String) ratingDropdown.getSelectedItem());
+
+    if (name.isEmpty()) {
+        routeInfoBox.append("Please enter a route name\n");
+        return;
+    }
+    if (routeManager.getCurrentRoute().isEmpty()) {
+        routeInfoBox.append("No streets in route to save\n");
+        return;
+    }
+
+    Route route;
+    if (accessRad.isSelected()) {
+        AccessibleRoute ar = new AccessibleRoute(name, name);
+        ar.setHasRamps(rampsCheck.isSelected());
+        ar.setRating(rating);
+        ar.setNote(note);
+        routeInfoBox.append("Difficulty: " + ar.calcDifficulty() + "/10\n");
+        route = ar;
+    } else {
+        WalkingRoute wr = new WalkingRoute(name, name);
+        wr.addTerrain((String) terrainDropdown.getSelectedItem());
+        wr.setRating(rating);
+        wr.setNote(note);
+        routeInfoBox.append("Difficulty: " + wr.calcDifficulty() + "/10\n");
+        route = wr;
+    }
+
+    routeManager.addRoute(name, route);
+    routeManager.saveToCSV(name, rating, note, route.calcDifficulty());
+    routeInfoBox.append("Route saved: " + name + "\n");
+
+    nameEntry.setText("");
+    noteEntry.setText("");
+    ratingDropdown.setSelectedIndex(0);
     }//GEN-LAST:event_saveToCSVActionPerformed
 
     private void loadFromCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadFromCSVActionPerformed
-    // add the code to load the thing from csv
+    String filename = nameEntry.getText().trim() + ".csv";
+    String result = routeManager.loadFromCSV(filename);
+    routeInfoBox.setText("");
+    routeInfoBox.append(result);
     }//GEN-LAST:event_loadFromCSVActionPerformed
 
     private void noteEntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noteEntryActionPerformed
@@ -288,6 +370,10 @@ public class MapGUI extends javax.swing.JFrame {
     routeManager.clearCurrentRoute();
     routeInfoBox.setText("");
     }//GEN-LAST:event_clearBTNActionPerformed
+
+    private void walkRadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_walkRadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_walkRadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -315,7 +401,9 @@ public class MapGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton accessRad;
     private javax.swing.JButton addBTN;
+    private javax.swing.ButtonGroup buttonGroup;
     private javax.swing.JButton clearBTN;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -324,14 +412,18 @@ public class MapGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton loadFromCSV;
     private javax.swing.JTextField nameEntry;
     private javax.swing.JTextField noteEntry;
+    private javax.swing.JCheckBox rampsCheck;
     private javax.swing.JComboBox<String> ratingDropdown;
     private javax.swing.JTextArea routeInfoBox;
     private javax.swing.JButton saveToCSV;
     private javax.swing.JTextField streetNrEntry;
+    private javax.swing.JComboBox<String> terrainDropdown;
     private javax.swing.JButton undoBTN;
+    private javax.swing.JRadioButton walkRad;
     // End of variables declaration//GEN-END:variables
 }

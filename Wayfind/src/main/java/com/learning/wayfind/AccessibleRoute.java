@@ -6,26 +6,37 @@ package com.learning.wayfind;
  * 2026
  */
 public class AccessibleRoute extends Route {
- 
+
     private boolean hasRamps;
-    //something else?
- 
+
     public AccessibleRoute(String id, String name) {
         super(id, name);
+        this.hasRamps = false;
     }
- 
-    @Override
-    public int calcDifficulty() {
-        return 0;
+
+    public boolean isHasRamps(){ 
+        return hasRamps;
     }
- 
-    @Override
-    public Route getRoute() {
-        return null;
+    public void setHasRamps(boolean h) {
+        this.hasRamps = h;
     }
- 
+
+    // Harder if no ramps available
     @Override
-    public int getDifficulty() { 
-        return 0;
+    public int calcDifficulty(){
+        if (hasRamps) return 3;
+        else{
+            return 7;
+        }
+    }
+
+    @Override
+    public Route getRoute(){ 
+        return this;
+    }
+
+    @Override
+    public int getDifficulty(){ 
+        return calcDifficulty(); 
     }
 }
