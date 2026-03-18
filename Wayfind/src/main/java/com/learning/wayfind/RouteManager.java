@@ -4,7 +4,10 @@ package com.learning.wayfind;
  *
  * Piotr Konkol
  * 2026
+ * most of the methods for the application
  */
+
+//imports
 import java.util.LinkedList;
 import java.util.HashMap;
 import java.util.Stack;
@@ -77,16 +80,15 @@ public class RouteManager implements Saveable {
     
     return sb.toString();
 }
-    
-    
-    
-    public void saveToCSV(String routeName, int rating, String note, int difficulty) {
-    try {
-        FileWriter fw = new FileWriter(routeName + ".csv");
-        BufferedWriter bw = new BufferedWriter(fw);
         
-        bw.write(routeName + "," + rating + "," + note + "," + difficulty);
-        bw.newLine();
+    // For the saving functionality, so that people will be able to download and share their routes
+    public void saveToCSV(String routeName, int rating, String note, int difficulty) {
+        try {
+            FileWriter fw = new FileWriter(routeName + ".csv");
+            BufferedWriter bw = new BufferedWriter(fw);
+        
+            bw.write(routeName + "," + rating + "," + note + "," + difficulty);
+            bw.newLine();
         
         // 1 street per line
         for (Street s : currentRoute) {
@@ -100,7 +102,7 @@ public class RouteManager implements Saveable {
             System.out.println("Error saving: " + e.getMessage());
         }
     }
-    
+    // 2nd part of the functionaality so that people can load the files they saved and read the info
     public String loadFromCSV(String filename) {
         clearCurrentRoute();
         StringBuilder display = new StringBuilder();
@@ -127,7 +129,8 @@ public class RouteManager implements Saveable {
                 int id = Integer.parseInt(parts[0].trim());
                 Street s = new Street(parts[1].trim(), id);
                 currentRoute.add(s);
-                display.append(step++).append(". ").append(s.toString()).append("\n");
+                display.append(step).append(". ").append(s.toString()).append("\n");
+                step += 1;
             }
 
             br.close();

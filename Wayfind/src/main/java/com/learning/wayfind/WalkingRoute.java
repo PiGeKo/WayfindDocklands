@@ -4,39 +4,24 @@ package com.learning.wayfind;
  *
  * Piotr Konkol
  * 2026
+ * subclass of Route
  */
 import java.util.ArrayList;
  
 public class WalkingRoute extends Route {
 
     private ArrayList<String> terrains;
-
+    
+    //Constructor
     public WalkingRoute(String id, String name) {
         super(id, name);
         terrains = new ArrayList<>();
     }
 
-    public void addTerrain(String terrain) {
-        terrains.add(terrain);
-    }
+    //Getters
     public ArrayList<String> getTerrains() {
         return terrains;
     }
-
-    // More difficult terrains = higher difficulty score
-    @Override
-    public int calcDifficulty() {
-        int difficulty = 1;
-        for (String terrain : terrains) {
-            if (terrain.equalsIgnoreCase("cobblestone") ||
-                terrain.equalsIgnoreCase("steep") ||
-                terrain.equalsIgnoreCase("unpaved")) {
-                difficulty += 1;
-            }
-        }
-        return Math.min(difficulty, 10);
-    }
-
     @Override
     public Route getRoute(){
         return this;
@@ -46,6 +31,23 @@ public class WalkingRoute extends Route {
     public int getDifficulty(){
         return calcDifficulty();
     }
-
+    
+    //Methods
+    public void addTerrain(String terrain) {
+        terrains.add(terrain);
+    }
+    // Asphalt is easy so at 1, others are more difficult so adds.
+    @Override
+    public int calcDifficulty() {
+        int difficulty = 1;
+        for (String terrain : terrains) {
+            if (terrain.equals("cobblestone") ||
+                terrain.equals("steep") ||
+                terrain.equals("unpaved")) {
+                difficulty += 1;
+            }
+        }
+        return Math.min(difficulty, 10);
+    }
 } 
 

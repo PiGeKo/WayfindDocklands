@@ -8,6 +8,7 @@ package com.learning.wayfind;
  *
  * Piotr Konkol
  * 2026
+ * interface for saving
  */
 public interface Saveable {
     void saveToCSV(String filename, int rating, String note, int difficulty);

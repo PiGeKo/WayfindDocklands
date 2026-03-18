@@ -3,6 +3,8 @@ package com.learning.wayfind;
  *
  * Piotr Konkol
  * 2026
+ * Abstract class for the routes
+ * Uses routeImplementation for making sure there's getRoute, getDifficulty, getRating in all routes.
  */
 public abstract class Route implements RouteImplementation {
  
@@ -37,10 +39,14 @@ public abstract class Route implements RouteImplementation {
     
     
     @Override
-    public Route getRoute() { return this; }
+    public Route getRoute() {
+        return this;
+    }
     
     @Override
-    public int getDifficulty() { return calcDifficulty(); }
+    public int getDifficulty() {
+        return calcDifficulty();
+    }
     
     //Setters
     public void setRating(int rating) {
