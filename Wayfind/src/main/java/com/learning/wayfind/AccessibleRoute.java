@@ -39,8 +39,9 @@ public class AccessibleRoute extends Route {
     // Harder if no ramps available
     @Override
     public int calcDifficulty(){
-        if (hasRamps) return 3;
-        else{
+        if (hasRamps){ 
+            return 3;
+        }else{
             return 7;
         }
     }

@@ -41,9 +41,9 @@ public class WalkingRoute extends Route {
     public int calcDifficulty() {
         int difficulty = 1;
         for (String terrain : terrains) {
-            if (terrain.equals("cobblestone") ||
-                terrain.equals("steep") ||
-                terrain.equals("unpaved")) {
+            if (terrain.equals("Cobblestone") ||
+                terrain.equals("Steep") ||
+                terrain.equals("Unpaved")) {
                 difficulty += 1;
             }
         }
